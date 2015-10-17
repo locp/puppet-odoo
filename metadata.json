@@ -1,0 +1,14 @@
+{
+  "name": "locp-odoo9",
+  "version": "0.1.0",
+  "author": "locp",
+  "summary": "Installs Odoo 9 on RHEL.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/locp/odoo9",
+  "project_page": "https://github.com/locp/odoo9",
+  "issues_url": "https://github.com/locp/odoo9/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
