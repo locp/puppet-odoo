@@ -1,48 +1,29 @@
 # Class: odoo9
 # ===========================
 #
-# Full description of class odoo9 here.
-#
-# Parameters
-# ----------
-#
-# Document parameters here.
-#
-# * `sample parameter`
-# Explanation of what this parameter affects and what it defaults to.
-# e.g. "Specify one or more upstream ntp servers as an array."
-#
-# Variables
-# ----------
-#
-# Here you should define a list of variables that this module would require.
-#
-# * `sample variable`
-#  Explanation of how this variable affects the function of this class and if
-#  it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#  External Node Classifier as a comma separated list of hostnames." (Note,
-#  global variables should be avoided in favor of class parameters as
-#  of Puppet 2.6.)
-#
-# Examples
-# --------
-#
-# @example
-#    class { 'odoo9':
-#      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#    }
-#
-# Authors
-# -------
-#
-# Author Name <author@domain.com>
-#
-# Copyright
-# ---------
-#
-# Copyright 2015 Your name here, unless otherwise noted.
-#
 class odoo9 {
+  class { 'postgresql::server':
+    before => Package['odoo'],
+  }
 
+  package { 'wkhtmltopdf':
+    ensure          => 'present',
+    name            => 'http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-centos7-amd64.rpm',
+    provider        => 'rpm',
+    before          => Package['odoo'],
+  }
 
+  yumrepo { 'odoo-nightly':
+    ensure   => 'present',
+    baseurl  => 'http://nightly.odoo.com/9.0/nightly/rpm/',
+    descr    => 'Odoo Nightly repository',
+    enabled  => True,
+    gpgcheck => True,
+    gpgkey   => 'https://nightly.odoo.com/odoo.key',
+    before   => Package['odoo'],
+  }
+
+  package { 'odoo':
+    ensure => 'present',
+  }
 }
