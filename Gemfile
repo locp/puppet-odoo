@@ -1,10 +1,26 @@
-source 'https://rubygems.org'
+source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
-puppetversion = ENV.key?('PUPPET_VERSION') ? "#{ENV['PUPPET_VERSION']}" : ['>= 3.3']
+puppetversion = ENV.key?('PUPPET_GEM_VERSION') ? " #{ENV['PUPPET_GEM_VERSION']}" : ['>= 4.0']
 gem 'puppet', puppetversion
-gem 'puppetlabs_spec_helper', '>= 0.8.2'
-gem 'puppet-lint', '>= 1.0.0'
 gem 'facter', '>= 1.7.0'
-gem 'puppet-blacksmith'
-gem 'rspec-puppet'
-gem 'metadata-json-lint'
+
+group :system_tests do
+  gem 'coveralls',              :require => false
+  gem 'docker-api',             :require => false
+  gem 'beaker-rspec',           :require => false
+  gem 'fog',                    :require => false
+  gem 'fog-google',             '<= 0.0.9'
+  gem 'pry',                    :require => false
+  gem 'puppet-blacksmith',      :require => false
+  gem 'puppetlabs_spec_helper', :require => false
+  gem 'rspec-puppet',           :require => false
+  gem 'rspec-puppet-utils',     :require => false
+  gem 'serverspec',             :require => false
+end
+
+group :development do
+  gem 'metadata-json-lint',   :require => false
+  gem 'puppet-lint',          :require => false
+  gem 'travis',               :require => false
+  gem 'travis-lint',          :require => false
+end
