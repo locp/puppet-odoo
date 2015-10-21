@@ -7,6 +7,7 @@ gem 'facter', '>= 1.7.0'
 group :system_tests do
   gem 'coveralls',              :require => false
   gem 'docker-api',             :require => false
+  gem 'beaker-hiera',           :require => false
   gem 'beaker-rspec',           :require => false
   gem 'fog',                    :require => false
   gem 'fog-google',             '<= 0.0.9'
