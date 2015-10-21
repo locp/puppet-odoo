@@ -1,7 +1,7 @@
 # Class: odoo9
-# ===========================
-#
-class odoo9 {
+class odoo9 (
+  $version = present
+  ) {
   class { 'postgresql::server':
     before => Package['odoo'],
     notify => Service['odoo']
@@ -10,7 +10,7 @@ class odoo9 {
   package { [ 'fontconfig', 'freetype', 'libpng', 'libjpeg-turbo', 'openssl',
               'libX11', 'libXext', 'libXrender', 'xorg-x11-fonts-Type1',
               'xorg-x11-fonts-75dpi', 'epel-release' ]:
-    ensure => present,
+    ensure => $version,
     before => Package['wkhtmltopdf'],
     notify => Service['odoo']
   }
