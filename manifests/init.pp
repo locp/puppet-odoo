@@ -40,7 +40,7 @@
 # Copyright
 # ---------
 #
-# Copyright 2015 Your name here, unless otherwise noted.
+# Copyright 2016 Your name here, unless otherwise noted.
 #
 class odoo9 {
 
