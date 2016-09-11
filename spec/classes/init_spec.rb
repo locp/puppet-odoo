@@ -11,10 +11,11 @@ describe 'odoo9' do
   ] }
 
   context 'with defaults for all parameters' do
-    it { should contain_class('odoo9') }
-    it { should contain_class('postgresql::server') }
-    it { should contain_package('wkhtmltopdf') }
-    it { should contain_yumrepo('odoo-nightly') }
-    it { should contain_package('odoo') }
+    it do
+      should contain_class('odoo9')
+      should contain_class('postgresql::server')
+      should contain_package('odoo')
+      should contain_service('odoo')
+    end
   end
 end
