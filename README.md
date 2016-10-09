@@ -50,6 +50,24 @@ Whether or not to install the optional `wkhtmltopdf` package from the Odoo
 repository.
 Default value **false**.
 
+##### `settings`
+A hash of settings to be passed to the `create_ini_settings` (see
+https://forge.puppet.com/puppetlabs/inifile#manage-multiple-ini_settings
+for details).  The following defaults are provided:
+
+```puppet
+{
+  path    => '/etc/odoo/openerp-server.conf',
+  require => Package['odoo'],
+  notify  => Service['odoo'],
+}
+```
+
+##### `version`
+The version of the `odoo` package to be installed.  Valid values are
+**present**, **latest** or the version of the version of the package to be
+installed ('i.e. *9.0c.20161009*).
+
 ## Limitations
 
 At the moment this module has only been tested against Ubuntu 14.
