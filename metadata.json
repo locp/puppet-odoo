@@ -7,6 +7,10 @@
   "source": "https://github.com/locp/odoo9",
   "project_page": "https://github.com/locp/odoo9",
   "issues_url": "https://github.com/locp/odoo9/issues",
+  "tags": [
+    "odoo",
+    "openerp"
+  ],
   "requirements": [
     {
       "name": "puppet",
