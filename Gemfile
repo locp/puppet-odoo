@@ -1,6 +1,8 @@
 source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
 puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : ['>= 3.3']
+
+gem 'coveralls'
 gem 'metadata-json-lint'
 gem 'puppet', puppetversion
 gem 'puppet-blacksmith'
