@@ -1,5 +1,7 @@
 # odoo9
 
+[![Join the chat at https://gitter.im/locp/puppet-odoo9](https://badges.gitter.im/locp/puppet-odoo9.svg)](https://gitter.im/locp/puppet-odoo9?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 #### Table of Contents
 
 1. [Description](#description)
