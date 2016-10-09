@@ -96,6 +96,32 @@ The version of the `odoo` package to be installed.  Valid values are
 **present**, **latest** or the version of the version of the package to be
 installed ('i.e. *9.0c.20161009*).
 
+#### Class odoo9::repo
+
+##### `descr`
+The name of the repository to be configured.
+Default value 'Odoo Nightly repository'
+
+##### `key_id`
+The key for the Debian APT repository.  This option is ignored on the
+Red Hat family.
+Default value '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5'
+
+##### `pkg_url`
+The URL to the package on the repository.  It defaults to
+**http://nightly.odoo.com/9.0/nightly/rpm/** on the Red Hat family and
+**http://nightly.odoo.com/9.0/nightly/deb/**.
+
+##### `pkg_url`
+The release for the Debian APT repository.  This option is ignored on the
+Red Hat family.
+Default value './'
+
+##### `repos`
+The repos for the Debian APT repository.  This option is ignored on the
+Red Hat family.
+Default value ''
+
 ## Limitations
 
 At the moment this module has only been tested against Ubuntu 14.  Also this
