@@ -18,10 +18,10 @@ describe 'odoo9' do
 
   context 'with defaults for all parameters' do
     it do
-      # should compile
+      should compile
       should contain_class('odoo9')
-      # should contain_package('odoo')
-      # should contain_service('odoo')
+      should contain_package('odoo')
+      should contain_service('odoo')
     end
   end
 end
