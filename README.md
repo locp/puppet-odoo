@@ -35,9 +35,37 @@ include ::odoo9
 
 ## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+The following example will install a basic PostgreSQL database on the
+node (using
+`[puppetlabs-postgresql](https://forge.puppet.com/puppetlabs/postgresql)`)
+it then configures the the Odoo repositories.  It then installs the
+`odoo` and `wkhtmltopdf` packages with some settings for the Odoo
+server:
+
+```puppet
+class { 'postgresql::server':
+  before => Class['odoo9']
+}
+
+class { '::odoo9::repo':
+  before => Class['odoo9']
+}
+
+class { '::odoo9':
+  install_wkhtmltopdf => true,
+  settings            => {
+    'options' => {
+      'admin_passwd' => 'XXX_TOP_SECRET_XXX',
+      'db_host'      => 'False',
+      'db_port'      => 'False',
+      'db_user'      => 'odoo',
+      'db_password'  => 'False',
+      'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
+    }
+  },
+  version             => '9.0c.20161009',
+}
+```
 
 ## Reference
 
@@ -70,7 +98,8 @@ installed ('i.e. *9.0c.20161009*).
 
 ## Limitations
 
-At the moment this module has only been tested against Ubuntu 14.
+At the moment this module has only been tested against Ubuntu 14.  Also this
+module does not in anyway configure PostgreSQL.
 
 ## Development
 
