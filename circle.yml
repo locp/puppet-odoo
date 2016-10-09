@@ -24,3 +24,11 @@ notify:
   webhooks: 
     - 
       url: "https://webhooks.gitter.im/e/63e7b124d98407e540f2"
+test: 
+  override: 
+    - bundle exec rake metadata_lint
+    - bundle exec rake rubocop
+    - bundle exec rake lint
+    - bundle exec rake validate
+    - bundle exec rake spec SPEC_OPTS="--format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/puppet.xml"
+    - bundle exec rake beaker
