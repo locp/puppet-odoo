@@ -34,6 +34,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puts 'metadata.json not found; skipping install of dependencies'
   end
 
+  config.vm.provision 'shell', inline: "puppet module install puppetlabs-postgresql"
+
   config.vm.provision 'puppet' do |puppet|
     puppet.manifests_path = 'examples'
     puppet.manifest_file = 'init.pp'
