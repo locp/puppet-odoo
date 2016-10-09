@@ -15,7 +15,7 @@
 ## Description
 
 Install Odoo 9 Communinty edition in a manner similar to that described in
-*[Installing Odoo]*(https://www.odoo.com/documentation/9.0/setup/install.html)
+*[Installing Odoo](https://www.odoo.com/documentation/9.0/setup/install.html)*.
 
 ## Setup
 
