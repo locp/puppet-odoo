@@ -28,9 +28,9 @@ describe 'odoo9 class' do
 
   describe 'Odoo 9 installation.' do
     it 'should work with no errors' do
-      apply_manifest(odoo_pp, :catch_failures => true)
+      apply_manifest(odoo_pp, catch_failures: true)
       expect(apply_manifest(odoo_pp,
-        :catch_failures => true).exit_code).to be_zero
+                            catch_failures: true).exit_code).to be_zero
     end
   end
 

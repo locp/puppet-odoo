@@ -1,14 +1,16 @@
 require 'spec_helper'
 describe 'odoo9' do
-  let(:pre_condition) { [
-    'class postgresql::server () {}',
-    'define ini_setting($ensure = nil,
-       $path,
-       $section,
-       $key_val_separator       = nil,
-       $setting,
-       $value                   = nil) {}',
-  ] }
+  let(:pre_condition) do
+    [
+      'define create_ini_settings($settings, $defaults) {}',
+      'define ini_setting($ensure = nil,
+         $path,
+         $section,
+         $key_val_separator       = nil,
+         $setting,
+         $value                   = nil) {}'
+    ]
+  end
 
   context 'with defaults for all parameters' do
     it do
