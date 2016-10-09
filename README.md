@@ -5,7 +5,6 @@
 1. [Description](#description)
 1. [Setup - The basics of getting started with odoo9](#setup)
     * [What odoo9 affects](#what-odoo9-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with odoo9](#beginning-with-odoo9)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
@@ -19,33 +18,20 @@ Install Odoo 9 Communinty edition in a manner similar to that described in
 
 ## Setup
 
-### What odoo9 affects **OPTIONAL**
+### What odoo9 affects
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
-
-If there's more that they should know about, though, this is the place to mention:
-
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
-
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+* Installs the `odoo` package from the Odoo repository.
+* Configures `/etc/odoo/openerp-server.conf`.
+* Manipulates the running state of the `odoo` service.
+* Optionally configures repositories to enable package installations from
+  the Odoo nightly builds.
+* Optionally installs the `wkhtmltopdf` package from the Odoo repository.
 
 ### Beginning with odoo9
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+```puppet
+include ::odoo9
+```
 
 ## Usage
 
@@ -55,23 +41,22 @@ examples and code samples for doing things with your module.
 
 ## Reference
 
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
+### Attributes
+
+#### Class odoo9
+
+##### `install_wkhtmltopdf`
+Whether or not to install the optional `wkhtmltopdf` package from the Odoo
+repository.
+Default value **false**.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+At the moment this module has only been tested against Ubuntu 14.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
+Contributions will be gratefully accepted. Please go to the project page, fork
+the project, make your changes locally and then raise a pull request. Details
+on how to do this are available at
+https://guides.github.com/activities/contributing-to-open-source.
