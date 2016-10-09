@@ -13,7 +13,6 @@ describe 'odoo9' do
   context 'with defaults for all parameters' do
     it do
       should contain_class('odoo9')
-      should contain_class('postgresql::server')
       should contain_package('odoo')
       should contain_service('odoo')
     end

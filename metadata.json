@@ -2,14 +2,42 @@
   "name": "locp-odoo9",
   "version": "0.1.0",
   "author": "locp",
-  "summary": "Puppet module to install Odoo 9.",
+  "summary": "Puppet module to install Odoo 9.0 Community.",
   "license": "Apache-2.0",
   "source": "https://github.com/locp/odoo9",
   "project_page": "https://github.com/locp/odoo9",
   "issues_url": "https://github.com/locp/odoo9/issues",
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ],
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {
+      "name": "puppetlabs-apt",
+      "version_requirement": ">= 2.0.0 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs-inifile",
+      "version_requirement": ">= 1.5.0 < 2.0.0"
+    },
+    {
+      "name": "puppetlabs-postgresql",
+      "version_requirement": ">= 4.0.0 < 5.0.0"
+    },
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04"
+      ]
+    }
   ],
   "data_provider": null
 }
-

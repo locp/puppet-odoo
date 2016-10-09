@@ -1,23 +1,11 @@
 require 'beaker-rspec'
 require 'pry'
 
+# Don't run these tests on the following platforms
+confine :except, :platform => 'solaris'
+confine :except, :platform => 'windows'
+confine :except, :platform => 'aix'
+
 hosts.each do |host|
-  # Install Puppet
-  on host, install_puppet
-end
-
-RSpec.configure do |c|
-  module_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-
-  c.formatter = :documentation
-
-  # Configure all nodes in nodeset
-  c.before :suite do
-    # Install module
-    puppet_module_install(:source => module_root, :module_name => 'odoo9')
-    hosts.each do |host|
-      on host, puppet('module','install','puppetlabs-inifile'), { :acceptable_exit_codes => [0,1] }
-      on host, puppet('module','install','puppetlabs-postgresql'), { :acceptable_exit_codes => [0,1] }
-    end
-  end
+  
 end
