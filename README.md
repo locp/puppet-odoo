@@ -16,6 +16,11 @@
 Install Odoo 9 Communinty edition in a manner similar to that described in
 *[Installing Odoo](https://www.odoo.com/documentation/9.0/setup/install.html)*.
 
+This module has now been renamed to locp-odoo.  Please see the following:
+
+* https://forge.puppet.com/locp/odoo
+* https://github.com/locp/puppet-odoo
+
 ## Setup
 
 ### What odoo9 affects
