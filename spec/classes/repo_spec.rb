@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'odoo9::repo' do
+describe 'odoo::repo' do
   let(:pre_condition) do
     [
       'class apt() {}',
@@ -22,7 +22,7 @@ describe 'odoo9::repo' do
     end
 
     it do
-      should contain_class('odoo9::repo')
+      should contain_class('odoo::repo')
       should contain_apt__key('odookey')
       should contain_apt__source('odoo')
       should contain_exec('update-odoo-repos')

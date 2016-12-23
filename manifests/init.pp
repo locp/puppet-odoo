@@ -1,5 +1,5 @@
-# Class: odoo9
-class odoo9 (
+# Class: odoo
+class odoo (
   $install_wkhtmltopdf = false,
   $settings            = {},
   $version             = present,

@@ -1,9 +1,9 @@
-# == Class: odoo9::repo
+# == Class: odoo::repo
 #
 # Please see the README for this module for full details of what this class
 # does as part of the module and how to use it.
 #
-class odoo9::repo (
+class odoo::repo (
   $descr   = 'Odoo Nightly repository',
   $key_id  = '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5',
   $key_url = 'https://nightly.odoo.com/odoo.key',
