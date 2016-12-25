@@ -1,6 +1,6 @@
 # odoo9
 
-#### Table of Contents
+## Table of Contents
 
 1. [Description](#description)
 1. [Setup - The basics of getting started with odoo9](#setup)
@@ -74,58 +74,12 @@ class { '::odoo9':
 
 ## Reference
 
-### Attributes
+### Public Classes
 
-#### Class odoo9
-
-##### `install_wkhtmltopdf`
-Whether or not to install the optional `wkhtmltopdf` package from the Odoo
-repository.
-Default value **false**.
-
-##### `settings`
-A hash of settings to be passed to the `create_ini_settings` (see
-https://forge.puppet.com/puppetlabs/inifile#manage-multiple-ini_settings
-for details).  The following defaults are provided:
-
-```puppet
-{
-  path    => '/etc/odoo/openerp-server.conf',
-  require => Package['odoo'],
-  notify  => Service['odoo'],
-}
-```
-
-##### `version`
-The version of the `odoo` package to be installed.  Valid values are
-**present**, **latest** or the version of the version of the package to be
-installed ('i.e. *9.0c.20161009*).
-
-#### Class odoo9::repo
-
-##### `descr`
-The name of the repository to be configured.
-Default value 'Odoo Nightly repository'
-
-##### `key_id`
-The key for the Debian APT repository.  This option is ignored on the
-Red Hat family.
-Default value '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5'
-
-##### `pkg_url`
-The URL to the package on the repository.  It defaults to
-**http://nightly.odoo.com/9.0/nightly/rpm/** on the Red Hat family and
-**http://nightly.odoo.com/9.0/nightly/deb/**.
-
-##### `pkg_url`
-The release for the Debian APT repository.  This option is ignored on the
-Red Hat family.
-Default value './'
-
-##### `repos`
-The repos for the Debian APT repository.  This option is ignored on the
-Red Hat family.
-Default value ''
+* [odoo0]
+  (http://locp.github.io/puppet-odoo/puppet_classes/odoo9.html)
+* [odoo9::repo]
+  (http://locp.github.io/puppet-odoo/puppet_classes/odoo9_3A_3Arepo.html)
 
 ## Limitations
 

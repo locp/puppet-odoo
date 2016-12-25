@@ -8,6 +8,7 @@ gem 'metadata-json-lint'
 gem 'puppet', puppetversion
 gem 'puppet-blacksmith'
 gem 'puppet-lint', '>= 1.0.0'
+gem 'puppet-strings'
 gem 'puppetlabs_spec_helper', '>= 1.0.0'
 gem 'rspec-puppet'
 gem 'rspec-puppet-utils'
