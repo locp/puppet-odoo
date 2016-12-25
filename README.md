@@ -76,7 +76,7 @@ class { '::odoo9':
 
 ### Public Classes
 
-* [odoo0]
+* [odoo9]
   (http://locp.github.io/puppet-odoo/puppet_classes/odoo9.html)
 * [odoo9::repo]
   (http://locp.github.io/puppet-odoo/puppet_classes/odoo9_3A_3Arepo.html)
