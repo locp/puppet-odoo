@@ -1,8 +1,6 @@
-# == Class: odoo9::repo
+# Install a repository to install an Odoo 9 package from.
 #
-# Please see the README for this module for full details of what this class
-# does as part of the module and how to use it.
-#
+# @param descr [string] A string to describe the repository.
 class odoo9::repo (
   $descr   = 'Odoo Nightly repository',
   $key_id  = '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5',
