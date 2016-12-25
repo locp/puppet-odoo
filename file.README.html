@@ -155,64 +155,14 @@ class { &#39;::odoo9&#39;:
 
 <h2 id="label-Reference">Reference</h2>
 
-<h3 id="label-Attributes">Attributes</h3>
-
-<h4 id="label-Class+odoo9">Class odoo9</h4>
-
-<h5 id="label-install_wkhtmltopdf"><code>install_wkhtmltopdf</code></h5>
-
-<p>Whether or not to install the optional <code>wkhtmltopdf</code> package
-from the Odoo repository. Default value <strong>false</strong>.</p>
-
-<h5 id="label-settings"><code>settings</code></h5>
-
-<p>A hash of settings to be passed to the <code>create_ini_settings</code>
-(see <a
-href="https://forge.puppet.com/puppetlabs/inifile#manage-multiple-ini_settings">forge.puppet.com/puppetlabs/inifile#manage-multiple-ini_settings</a>
-for details). The following defaults are provided:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='lbrace'>{</span>
-  <span class='id identifier rubyid_path'>path</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/etc/odoo/openerp-server.conf</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-  <span class='id identifier rubyid_require'>require</span> <span class='op'>=&gt;</span> <span class='const'>Package</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>odoo</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
-  <span class='id identifier rubyid_notify'>notify</span>  <span class='op'>=&gt;</span> <span class='const'>Service</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>odoo</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
-<span class='rbrace'>}</span>
-</code></pre>
-
-<h5 id="label-version"><code>version</code></h5>
-
-<p>The version of the <code>odoo</code> package to be installed. Valid values
-are <strong>present</strong>, <strong>latest</strong> or the version of the
-version of the package to be installed (&#39;i.e. <em>9.0c.20161009</em>).</p>
-
-<h4 id="label-Class+odoo9-3A-3Arepo">Class odoo9::repo</h4>
-
-<h5 id="label-descr"><code>descr</code></h5>
-
-<p>The name of the repository to be configured. Default value &#39;Odoo
-Nightly repository&#39;</p>
-
-<h5 id="label-key_id"><code>key_id</code></h5>
-
-<p>The key for the Debian APT repository. This option is ignored on the Red
-Hat family. Default value
-&#39;5D134C924CB06330DCEFE2A1DEF2A2198183CBB5&#39;</p>
-
-<h5 id="label-pkg_url"><code>pkg_url</code></h5>
-
-<p>The URL to the package on the repository. It defaults to <strong><a
-href="http://nightly.odoo.com/9.0/nightly/rpm">nightly.odoo.com/9.0/nightly/rpm</a>/</strong>
-on the Red Hat family and <strong><a
-href="http://nightly.odoo.com/9.0/nightly/deb">nightly.odoo.com/9.0/nightly/deb</a>/</strong>.</p>
-
-<h5 id="label-pkg_url"><code>pkg_url</code></h5>
-
-<p>The release for the Debian APT repository. This option is ignored on the
-Red Hat family. Default value &#39;./&#39;</p>
-
-<h5 id="label-repos"><code>repos</code></h5>
-
-<p>The repos for the Debian APT repository. This option is ignored on the Red
-Hat family. Default value &#39;&#39;</p>
+<h3 id="label-Public+Classes">Public Classes</h3>
+<ul><li>
+<p><a
+href="http://locp.github.io/puppet-odoo/puppet_classes/odoo9.html">odoo9</a></p>
+</li><li>
+<p><a
+href="http://locp.github.io/puppet-odoo/puppet_classes/odoo9_3A_3Arepo.html">odoo9::repo</a></p>
+</li></ul>
 
 <h2 id="label-Limitations">Limitations</h2>
 
@@ -228,7 +178,7 @@ href="https://guides.github.com/activities/contributing-to-open-source">guides.g
 </div></div>
 
       <div id="footer">
-  Generated on Sun Dec 25 13:18:44 2016 by
+  Generated on Sun Dec 25 13:48:42 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>
