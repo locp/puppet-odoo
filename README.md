@@ -3,6 +3,7 @@
 [![CircleCI](https://circleci.com/gh/locp/puppet-odoo/tree/master.svg?style=svg)](https://circleci.com/gh/locp/puppet-odoo/tree/master)
 [![Build Status](https://travis-ci.org/locp/puppet-odoo.png?branch=master)](https://travis-ci.org/locp/puppet-odoo)
 [![Coverage Status](https://coveralls.io/repos/github/locp/puppet-odoo/badge.svg?branch=master)](https://coveralls.io/github/locp/puppet-odoo?branch=master)
+[![Join the chat at https://gitter.im/locp/puppet-odoo](https://badges.gitter.im/locp/puppet-odoo.svg)](https://gitter.im/locp/puppet-odoo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Table of Contents
 
