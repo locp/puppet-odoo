@@ -10,14 +10,14 @@
 # https://docs.puppet.com/guides/tests_smoke.html
 #
 class { 'postgresql::server':
-  before => Class['odoo9']
+  before => Class['odoo']
 }
 
-class { '::odoo9::repo':
-  before => Class['odoo9']
+class { '::odoo::repo9':
+  before => Class['odoo']
 }
 
-class { '::odoo9':
+class { '::odoo':
   install_wkhtmltopdf => true,
   settings            => {
     'options' => {
@@ -29,5 +29,5 @@ class { '::odoo9':
       'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
     }
   },
-  version             => '9.0c.20161009',
+  version             => present,
 }

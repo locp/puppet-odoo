@@ -1,20 +1,20 @@
 require 'spec_helper_acceptance'
 
-describe 'odoo9 class' do
-  odoo_pp = <<-EOS
+describe 'odoo module' do
+  odoo9_pp = <<-EOS
     class { 'postgresql::server':
-      before => Class['odoo9']
+      before => Class['odoo']
     }
 
-    class { '::odoo9::repo':
-      before => Class['odoo9']
+    class { '::odoo::repo9':
+      before => Class['odoo']
     }
 
-    class { '::odoo9':
+    class { '::odoo':
       install_wkhtmltopdf => true,
       settings            => {
         'options' => {
-          'admin_passwd' => 'XXX_TOP_SECRET_XXX',
+          'admin_passwd' => 'XXX_TOP_SECRET_XXX_9',
           'db_host'      => 'False',
           'db_port'      => 'False',
           'db_user'      => 'odoo',
@@ -28,8 +28,8 @@ describe 'odoo9 class' do
 
   describe 'Odoo 9 installation.' do
     it 'should work with no errors' do
-      apply_manifest(odoo_pp, catch_failures: true)
-      expect(apply_manifest(odoo_pp,
+      apply_manifest(odoo9_pp, catch_failures: true)
+      expect(apply_manifest(odoo9_pp,
                             catch_failures: true).exit_code).to be_zero
     end
   end

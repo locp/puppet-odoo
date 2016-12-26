@@ -7,7 +7,8 @@
 #   Hat family and 'http://nightly.odoo.com/9.0/nightly/deb/' on Debian.
 # @param release [string] The release for the Debian APT repository.  This option is ignored on the Red Hat family.
 # @param repos [string] The repos for the Debian APT repository.  This option is ignored on the Red Hat family.
-class odoo::repo (
+class odoo::repo9 (
+  $ensure  = present,
   $descr   = 'Odoo Nightly repository',
   $key_id  = '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5',
   $key_url = 'https://nightly.odoo.com/odoo.key',
@@ -24,7 +25,7 @@ class odoo::repo (
       }
 
       yumrepo { 'odoo':
-        ensure   => present,
+        ensure   => $ensure,
         descr    => $descr,
         baseurl  => $baseurl,
         enabled  => 1,
@@ -36,6 +37,7 @@ class odoo::repo (
       include apt::update
 
       apt::key {'odookey':
+        ensure => $ensure,
         id     => $key_id,
         source => $key_url,
         before => Apt::Source['odoo'],
@@ -48,6 +50,7 @@ class odoo::repo (
       }
 
       apt::source {'odoo':
+        ensure   => $ensure,
         location => $location,
         comment  => $descr,
         release  => $release,
