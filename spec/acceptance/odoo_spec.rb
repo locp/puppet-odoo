@@ -22,7 +22,7 @@ describe 'odoo9 class' do
           'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
         }
       },
-      version             => '9.0c.20161009',
+      version             => 'present',
     }
   EOS
 
