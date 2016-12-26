@@ -3,7 +3,7 @@ dependencies:
   bundler:
     without: [development]
   override:
-    - bundle install --without development:
+    - bundle install --without acceptance development:
         timeout: 240
         environment:
           PUPPET_GEM_VERSION: '~> 4.0'
