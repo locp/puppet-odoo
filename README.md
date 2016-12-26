@@ -1,5 +1,9 @@
 # odoo9
 
+[![CircleCI](https://circleci.com/gh/locp/puppet-odoo/tree/master.svg?style=svg)](https://circleci.com/gh/locp/puppet-odoo/tree/master)
+[![Build Status](https://travis-ci.org/locp/puppet-odoo.png?branch=master)](https://travis-ci.org/locp/puppet-odoo)
+[![Coverage Status](https://coveralls.io/repos/github/locp/puppet-odoo/badge.svg?branch=master)](https://coveralls.io/github/locp/puppet-odoo?branch=master)
+
 ## Table of Contents
 
 1. [Description](#description)
