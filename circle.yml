@@ -2,8 +2,6 @@
 dependencies: 
   bundler:
     without: [development]
-  cache_directories:
-    - "~/.rvm/gems"
   override:
     - bundle install --without development:
         timeout: 240
@@ -12,14 +10,20 @@ dependencies:
           STRICT_VARIABLES: yes
   post:
     - rvm cleanup all
+deployment: 
+  master: 
+    branch: master
+    commands: 
+      - git config --global user.email "info@locp.co.uk"
+      - git config --global user.name "CircleCI"
+      - bundle exec rake strings:gh_pages:update
+      - bundle exec rake deploy
 machine: 
   environment:
     PUPPET_GEM_VERSION: '~> 4.0'
     STRICT_VARIABLES: yes
   ruby:
     version: 2.1.6
-  services: 
-    - docker
 notify: 
   webhooks: 
     - 
