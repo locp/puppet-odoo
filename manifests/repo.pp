@@ -1,8 +1,12 @@
-# == Class: odoo::repo
+# Install a repository to install an Odoo 9 package from.
 #
-# Please see the README for this module for full details of what this class
-# does as part of the module and how to use it.
-#
+# @param descr [string] A string to describe the repository.
+# @param key_id [string] The key for the Debian APT repository.  This option is ignored on the Red Hat family.
+# @param key_url [string] A URL to the key for the Debian APT repository.  This option is ignored on the Red Hat family.
+# @param pkg_url [string] The URL to a package.  This defaults to 'http://nightly.odoo.com/9.0/nightly/rpm/' on the Red
+#   Hat family and 'http://nightly.odoo.com/9.0/nightly/deb/' on Debian.
+# @param release [string] The release for the Debian APT repository.  This option is ignored on the Red Hat family.
+# @param repos [string] The repos for the Debian APT repository.  This option is ignored on the Red Hat family.
 class odoo::repo (
   $descr   = 'Odoo Nightly repository',
   $key_id  = '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5',
