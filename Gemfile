@@ -4,6 +4,8 @@ puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : ['>= 3.3']
 
 gem 'coveralls'
 gem 'facter', '>= 1.7.0'
+gem 'git', '1.3.0'
+gem 'httparty'
 gem 'metadata-json-lint'
 gem 'puppet', puppetversion
 gem 'puppet-blacksmith'
