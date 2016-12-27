@@ -14,18 +14,60 @@ describe 'odoo::repo9' do
     end
   end
 
-  context 'with defaults for all parameters' do
+  context 'with defaults for all parameters (Debian)' do
     let :facts do
       {
         osfamily: 'Debian'
       }
-    end
+    end 
 
     it do
-      should contain_class('odoo::repo9')
-      should contain_apt__key('odookey')
-      should contain_apt__source('odoo')
-      should contain_exec('update-odoo-repos')
+      should contain_class('odoo::repo9').only_with(
+        ensure: 'present',
+        descr: 'Odoo Nightly repository',
+        key_id: '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5',
+        key_url: 'https://nightly.odoo.com/odoo.key',
+        pkg_url: nil,
+        release: './',
+        repos: ''
+      )
+
+      should contain_apt__key('odookey').with(
+        ensure: 'present',
+        id: '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5',
+        source: 'https://nightly.odoo.com/odoo.key'
+      )
+
+      should contain_apt__source('odoo').with(
+        ensure: 'present',
+        location: 'http://nightly.odoo.com/9.0/nightly/deb/',
+        comment: 'Odoo Nightly repository',
+        release: './',
+        include: { 'src' => false }
+      )
+
+      should contain_exec('update-odoo-repos').with(
+        refreshonly: true,
+        command: '/bin/true'
+      )
+    end
+  end
+
+  context 'with defaults for all parameters (RedHat)' do
+    let :facts do
+      {
+        osfamily: 'RedHat'
+      }
+    end 
+
+    it do
+      should contain_yumrepo('odoo').with(
+        ensure: 'present',
+        descr: 'Odoo Nightly repository',
+        baseurl: 'http://nightly.odoo.com/9.0/nightly/rpm/',
+        enabled: 1,
+        gpgcheck: 0
+      )
     end
   end
 end
