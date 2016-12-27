@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision 'shell', inline: 'puppet module install puppetlabs-postgresql'
   config.vm.provision 'puppet' do |puppet|
     puppet.manifests_path = 'examples'
-    puppet.manifest_file = 'odoo9.pp'
+    puppet.manifest_file = 'odoo10.pp'
   end
   config.vm.network 'forwarded_port', guest: 8069, host: 8069
   config.vm.provider 'virtualbox' do |vb|

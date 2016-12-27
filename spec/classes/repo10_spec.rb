@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'odoo::repo9' do
+describe 'odoo::repo10' do
   let(:pre_condition) do
     [
       'class apt() {}',
@@ -22,7 +22,7 @@ describe 'odoo::repo9' do
     end
 
     it do
-      should contain_class('odoo::repo9').only_with(
+      should contain_class('odoo::repo10').only_with(
         ensure: 'present',
         descr: 'Odoo Nightly repository',
         key_id: '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5',
@@ -40,7 +40,7 @@ describe 'odoo::repo9' do
 
       should contain_apt__source('odoo').with(
         ensure: 'present',
-        location: 'http://nightly.odoo.com/9.0/nightly/deb/',
+        location: 'http://nightly.odoo.com/10.0/nightly/deb/',
         comment: 'Odoo Nightly repository',
         release: './',
         include: { 'src' => false }
@@ -64,7 +64,7 @@ describe 'odoo::repo9' do
       should contain_yumrepo('odoo').with(
         ensure: 'present',
         descr: 'Odoo Nightly repository',
-        baseurl: 'http://nightly.odoo.com/9.0/nightly/rpm/',
+        baseurl: 'http://nightly.odoo.com/10.0/nightly/rpm/',
         enabled: 1,
         gpgcheck: 0
       )

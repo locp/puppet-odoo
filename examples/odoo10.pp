@@ -13,12 +13,11 @@ class { 'postgresql::server':
   before => Class['odoo']
 }
 
-class { '::odoo::repo9':
+class { '::odoo::repo10':
   before => Class['odoo']
 }
 
 class { '::odoo':
-  config_file         => '/etc/odoo/openerp-server.conf',
   install_wkhtmltopdf => true,
   settings            => {
     'options' => {
@@ -27,7 +26,7 @@ class { '::odoo':
       'db_port'      => 'False',
       'db_user'      => 'odoo',
       'db_password'  => 'False',
-      'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
+      'addons_path'  => '/usr/lib/python2.7/dist-packages/odoo/addons',
     }
   },
   version             => present,
