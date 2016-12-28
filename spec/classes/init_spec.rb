@@ -16,12 +16,36 @@ describe 'odoo' do
     end
   end
 
-  context 'with defaults for all parameters' do
+  context 'with defaults for all parameters (debian)' do
+    let :facts do
+      {
+        osfamily: 'Debian'
+      }
+    end
+
     it do
       should compile
+      should have_resource_count(2)
       should contain_class('odoo')
       should contain_package('odoo')
       should contain_service('odoo')
+    end
+  end
+
+  context 'with defaults for all parameters (red hat)' do
+    let :facts do
+      {
+        osfamily: 'RedHat'
+      }
+    end
+
+    it do
+      should compile
+      should have_resource_count(3)
+      should contain_class('odoo')
+      should contain_package('odoo')
+      should contain_service('odoo')
+      should contain_exec('/usr/bin/systemctl daemon-reload')
     end
   end
 end

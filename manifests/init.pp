@@ -29,6 +29,13 @@ class odoo (
     notify => Service['odoo']
   }
 
+  if $::osfamily == 'RedHat' {
+    exec { '/usr/bin/systemctl daemon-reload':
+      refreshonly => true,
+      subscribe   => Package['odoo'],
+    }
+  }
+
   $defaults = {
     path    => $config_file,
     require => Package['odoo'],

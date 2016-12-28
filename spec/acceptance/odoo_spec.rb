@@ -30,6 +30,9 @@ describe 'odoo module' do
   describe 'Odoo 9 installation.' do
     it 'should work with no errors' do
       apply_manifest(install_odoo9_pp, catch_failures: true)
+    end
+
+    it 'should be idempotent' do
       expect(apply_manifest(install_odoo9_pp,
                             catch_failures: true).exit_code).to be_zero
     end
@@ -51,8 +54,14 @@ describe 'odoo module' do
     package { 'odoo':
       ensure => purged,
     } ->
-    class { '::odoo::repo9':
+    class { 'odoo::repo9':
       ensure => absent,
+    }
+
+    if $::osfamily == 'RedHat' {
+      exec { '/usr/bin/yum clean all':
+        before => Class['odoo::repo9'],
+      }
     }
   EOS
 
@@ -90,6 +99,9 @@ describe 'odoo module' do
   describe 'Odoo 10 installation.' do
     it 'should work with no errors' do
       apply_manifest(install_odoo10_pp, catch_failures: true)
+    end
+
+    it 'should be idempotent' do
       expect(apply_manifest(install_odoo10_pp,
                             catch_failures: true).exit_code).to be_zero
     end
