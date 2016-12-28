@@ -1,4 +1,4 @@
-# odoo9
+# odoo
 
 [![CircleCI](https://circleci.com/gh/locp/puppet-odoo/tree/master.svg?style=svg)](https://circleci.com/gh/locp/puppet-odoo/tree/master)
 [![Build Status](https://travis-ci.org/locp/puppet-odoo.png?branch=master)](https://travis-ci.org/locp/puppet-odoo)
@@ -8,9 +8,9 @@
 ## Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with odoo9](#setup)
-    * [What odoo9 affects](#what-odoo9-affects)
-    * [Beginning with odoo9](#beginning-with-odoo9)
+1. [Setup - The basics of getting started with odoo](#setup)
+    * [What odoo affects](#what-odoo-affects)
+    * [Beginning with odoo](#beginning-with-odoo)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -28,7 +28,7 @@ This module has now been renamed to locp-odoo.  Please see the following:
 
 ## Setup
 
-### What odoo9 affects
+### What odoo affects
 
 * Installs the `odoo` package from the Odoo repository.
 * Configures `/etc/odoo/openerp-server.conf`.
@@ -37,10 +37,10 @@ This module has now been renamed to locp-odoo.  Please see the following:
   the Odoo nightly builds.
 * Optionally installs the `wkhtmltopdf` package from the Odoo repository.
 
-### Beginning with odoo9
+### Beginning with odoo
 
 ```puppet
-include ::odoo9
+include ::odoo
 ```
 
 ## Usage
@@ -54,14 +54,14 @@ server:
 
 ```puppet
 class { 'postgresql::server':
-  before => Class['odoo9']
+  before => Class['odoo']
 }
 
-class { '::odoo9::repo':
-  before => Class['odoo9']
+class { '::odoo::repo':
+  before => Class['odoo']
 }
 
-class { '::odoo9':
+class { '::odoo':
   install_wkhtmltopdf => true,
   settings            => {
     'options' => {

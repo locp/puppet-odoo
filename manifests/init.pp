@@ -1,10 +1,18 @@
+# Class: odoo
 # Install and configure Odoo Community.
-# @param install_wkhtmltopdf [boolean] Whether or not to install the optional `wkhtmltopdf` package.
-# @param settings [hash] A hash of settings to be passed to the `create_ini_settings` (see
-#   https://forge.puppet.com/puppetlabs/inifile#manage-multiple-ini_settings for details).
-# @param version [string] The version of the `odoo` package to be installed.  Valid values are **present**, **latest**
-#   or the version of the version of the package to be installed (i.e. '9.0c.20161009').
-class odoo9 (
+# @param config_file [string] The Odoo configuration file.  Will need to be
+#   changed to `/etc/odoo/openerp-server.conf` for Odoo 9.
+# @param install_wkhtmltopdf [boolean] Whether or not to install the optional
+#   `wkhtmltopdf` package.
+# @param settings [hash] A hash of settings to be passed to the
+#   `create_ini_settings` (see
+#   https://forge.puppet.com/puppetlabs/inifile#manage-multiple-ini_settings
+#   for details).
+# @param version [string] The version of the `odoo` package to be installed.
+#   Valid values are **present**, **latest** or the version of the version of
+#   the package to be installed (i.e. '9.0c.20161009').
+class odoo (
+  $config_file         = '/etc/odoo/odoo.conf',
   $install_wkhtmltopdf = false,
   $settings            = {},
   $version             = present,
@@ -21,8 +29,15 @@ class odoo9 (
     notify => Service['odoo']
   }
 
+  if $::osfamily == 'RedHat' {
+    exec { '/usr/bin/systemctl daemon-reload':
+      refreshonly => true,
+      subscribe   => Package['odoo'],
+    }
+  }
+
   $defaults = {
-    path    => '/etc/odoo/openerp-server.conf',
+    path    => $config_file,
     require => Package['odoo'],
     notify  => Service['odoo'],
   }
