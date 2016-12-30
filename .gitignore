@@ -1,12 +1,14 @@
 .bundle/
 coverage/
+doc/
 Gemfile.lock
 .idea/
 *.iml
+log/
 pkg/
 spec/fixtures/
 *.swn
 *.swo
 *.swp
 vendor/
-log/
+.yardoc/

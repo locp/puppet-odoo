@@ -1,11 +1,16 @@
-# odoo9
+# odoo
 
-#### Table of Contents
+[![CircleCI](https://circleci.com/gh/locp/puppet-odoo/tree/master.svg?style=svg)](https://circleci.com/gh/locp/puppet-odoo/tree/master)
+[![Build Status](https://travis-ci.org/locp/puppet-odoo.png?branch=master)](https://travis-ci.org/locp/puppet-odoo)
+[![Coverage Status](https://coveralls.io/repos/github/locp/puppet-odoo/badge.svg?branch=master)](https://coveralls.io/github/locp/puppet-odoo?branch=master)
+[![Join the chat at https://gitter.im/locp/puppet-odoo](https://badges.gitter.im/locp/puppet-odoo.svg)](https://gitter.im/locp/puppet-odoo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+## Table of Contents
 
 1. [Description](#description)
-1. [Setup - The basics of getting started with odoo9](#setup)
-    * [What odoo9 affects](#what-odoo9-affects)
-    * [Beginning with odoo9](#beginning-with-odoo9)
+1. [Setup - The basics of getting started with odoo](#setup)
+    * [What odoo affects](#what-odoo-affects)
+    * [Beginning with odoo](#beginning-with-odoo)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -13,7 +18,7 @@
 
 ## Description
 
-Install Odoo 9 Communinty edition in a manner similar to that described in
+Install Odoo Communinty edition in a manner similar to that described in
 *[Installing Odoo](https://www.odoo.com/documentation/9.0/setup/install.html)*.
 
 This module has now been renamed to locp-odoo.  Please see the following:
@@ -23,7 +28,7 @@ This module has now been renamed to locp-odoo.  Please see the following:
 
 ## Setup
 
-### What odoo9 affects
+### What odoo affects
 
 * Installs the `odoo` package from the Odoo repository.
 * Configures `/etc/odoo/openerp-server.conf`.
@@ -32,10 +37,10 @@ This module has now been renamed to locp-odoo.  Please see the following:
   the Odoo nightly builds.
 * Optionally installs the `wkhtmltopdf` package from the Odoo repository.
 
-### Beginning with odoo9
+### Beginning with odoo
 
 ```puppet
-include ::odoo9
+include ::odoo
 ```
 
 ## Usage
@@ -43,20 +48,20 @@ include ::odoo9
 The following example will install a basic PostgreSQL database on the
 node (using
 `[puppetlabs-postgresql](https://forge.puppet.com/puppetlabs/postgresql)`)
-it then configures the the Odoo repositories.  It then installs the
+it then configures the the Odoo 9 repositories.  It then installs the
 `odoo` and `wkhtmltopdf` packages with some settings for the Odoo
 server:
 
 ```puppet
 class { 'postgresql::server':
-  before => Class['odoo9']
+  before => Class['odoo']
 }
 
-class { '::odoo9::repo':
-  before => Class['odoo9']
+class { '::odoo::repo9':
+  before => Class['odoo']
 }
 
-class { '::odoo9':
+class { '::odoo':
   install_wkhtmltopdf => true,
   settings            => {
     'options' => {
@@ -68,69 +73,50 @@ class { '::odoo9':
       'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
     }
   },
-  version             => '9.0c.20161009',
+}
+```
+
+To do the same for Odoo 10:
+
+```puppet
+#
+class { 'postgresql::server':
+  before => Class['odoo']
+}
+
+class { '::odoo::repo10':
+  before => Class['odoo']
+}
+
+class { '::odoo':
+  install_wkhtmltopdf => true,
+  settings            => {
+    'options' => {
+      'admin_passwd' => 'XXX_TOP_SECRET_XXX',
+      'db_host'      => 'False',
+      'db_port'      => 'False',
+      'db_user'      => 'odoo',
+      'db_password'  => 'False',
+      'addons_path'  => '/usr/lib/python2.7/dist-packages/odoo/addons',
+    }
+  },
 }
 ```
 
 ## Reference
 
-### Attributes
+### Public Classes
 
-#### Class odoo9
-
-##### `install_wkhtmltopdf`
-Whether or not to install the optional `wkhtmltopdf` package from the Odoo
-repository.
-Default value **false**.
-
-##### `settings`
-A hash of settings to be passed to the `create_ini_settings` (see
-https://forge.puppet.com/puppetlabs/inifile#manage-multiple-ini_settings
-for details).  The following defaults are provided:
-
-```puppet
-{
-  path    => '/etc/odoo/openerp-server.conf',
-  require => Package['odoo'],
-  notify  => Service['odoo'],
-}
-```
-
-##### `version`
-The version of the `odoo` package to be installed.  Valid values are
-**present**, **latest** or the version of the version of the package to be
-installed ('i.e. *9.0c.20161009*).
-
-#### Class odoo9::repo
-
-##### `descr`
-The name of the repository to be configured.
-Default value 'Odoo Nightly repository'
-
-##### `key_id`
-The key for the Debian APT repository.  This option is ignored on the
-Red Hat family.
-Default value '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5'
-
-##### `pkg_url`
-The URL to the package on the repository.  It defaults to
-**http://nightly.odoo.com/9.0/nightly/rpm/** on the Red Hat family and
-**http://nightly.odoo.com/9.0/nightly/deb/**.
-
-##### `pkg_url`
-The release for the Debian APT repository.  This option is ignored on the
-Red Hat family.
-Default value './'
-
-##### `repos`
-The repos for the Debian APT repository.  This option is ignored on the
-Red Hat family.
-Default value ''
+* [odoo]
+  (http://locp.github.io/puppet-odoo/puppet_classes/odoo.html)
+* [odoo::repo9]
+  (http://locp.github.io/puppet-odoo/puppet_classes/odoo_3A_3Arepo9.html)
+* [odoo::repo10]
+  (http://locp.github.io/puppet-odoo/puppet_classes/odoo_3A_3Arepo10.html)
 
 ## Limitations
 
-At the moment this module has only been tested against Ubuntu 14.  Also this
-module does not in anyway configure PostgreSQL.
+This module does not in anyway configure PostgreSQL.
 
 ## Development
 
