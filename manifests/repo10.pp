@@ -1,5 +1,7 @@
 # Install a repository to install an Odoo 10 package from.
 #
+# @param ensure [absent | present] Ensure the the repository is either
+#   absent or present.
 # @param descr [string] A string to describe the repository.
 # @param key_id [string] The key for the Debian APT repository.  This option
 #   is ignored on the Red Hat family.
