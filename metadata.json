@@ -1,12 +1,12 @@
 {
-  "name": "locp-odoo9",
-  "version": "0.1.1",
+  "name": "locp-odoo",
+  "version": "0.2.0",
   "author": "locp",
-  "summary": "Puppet module to install Odoo 9.0 Community.",
+  "summary": "Puppet module to install Odoo Community.",
   "license": "Apache-2.0",
-  "source": "https://github.com/locp/puppet-odoo9",
-  "project_page": "https://github.com/locp/puppet-odoo9",
-  "issues_url": "https://github.com/locp/puppet-odoo9/issues",
+  "source": "https://github.com/locp/puppet-odoo",
+  "project_page": "https://github.com/locp/puppet-odoo",
+  "issues_url": "https://github.com/locp/puppet-odoo/issues",
   "tags": [
     "odoo",
     "openerp"
@@ -36,6 +36,12 @@
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "14.04"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
       ]
     }
   ],

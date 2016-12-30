@@ -22,7 +22,7 @@ RSpec.configure do |c|
   # Configure all nodes in nodeset
   c.before :suite do
     # Install module
-    puppet_module_install(source: module_root, module_name: 'odoo9')
+    puppet_module_install(source: module_root, module_name: 'odoo')
     hosts.each do |host|
       on host, puppet('module', 'install',
                       'puppetlabs-apt'), acceptable_exit_codes: [0, 1]

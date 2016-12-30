@@ -1,9 +1,21 @@
-# == Class: odoo9::repo
+# Install a repository to install an Odoo 10 package from.
 #
-# Please see the README for this module for full details of what this class
-# does as part of the module and how to use it.
-#
-class odoo9::repo (
+# @param ensure [absent | present] Ensure the the repository is either
+#   absent or present.
+# @param descr [string] A string to describe the repository.
+# @param key_id [string] The key for the Debian APT repository.  This option
+#   is ignored on the Red Hat family.
+# @param key_url [string] A URL to the key for the Debian APT repository.
+#   This option is ignored on the Red Hat family.
+# @param pkg_url [string] The URL to a package.  This defaults to
+#   'http://nightly.odoo.com/10.0/nightly/rpm/' on the Red
+#   Hat family and 'http://nightly.odoo.com/9.0/nightly/deb/' on Debian.
+# @param release [string] The release for the Debian APT repository.  This
+#   option is ignored on the Red Hat family.
+# @param repos [string] The repos for the Debian APT repository.  This option
+#   is ignored on the Red Hat family.
+class odoo::repo10 (
+  $ensure  = present,
   $descr   = 'Odoo Nightly repository',
   $key_id  = '5D134C924CB06330DCEFE2A1DEF2A2198183CBB5',
   $key_url = 'https://nightly.odoo.com/odoo.key',
@@ -16,11 +28,11 @@ class odoo9::repo (
       if $pkg_url != undef {
         $baseurl = $pkg_url
       } else {
-        $baseurl = 'http://nightly.odoo.com/9.0/nightly/rpm/'
+        $baseurl = 'http://nightly.odoo.com/10.0/nightly/rpm/'
       }
 
       yumrepo { 'odoo':
-        ensure   => present,
+        ensure   => $ensure,
         descr    => $descr,
         baseurl  => $baseurl,
         enabled  => 1,
@@ -32,6 +44,7 @@ class odoo9::repo (
       include apt::update
 
       apt::key {'odookey':
+        ensure => $ensure,
         id     => $key_id,
         source => $key_url,
         before => Apt::Source['odoo'],
@@ -40,10 +53,11 @@ class odoo9::repo (
       if $pkg_url != undef {
         $location = $pkg_url
       } else {
-        $location = 'http://nightly.odoo.com/9.0/nightly/deb/'
+        $location = 'http://nightly.odoo.com/10.0/nightly/deb/'
       }
 
       apt::source {'odoo':
+        ensure   => $ensure,
         location => $location,
         comment  => $descr,
         release  => $release,
