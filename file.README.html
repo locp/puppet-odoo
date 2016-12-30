@@ -60,17 +60,27 @@
       <iframe id="search_frame" src="file_list.html"></iframe>
 
       <div id="content"><div id='filecontents'>
-<h1 id="label-odoo9">odoo9</h1>
+<h1 id="label-odoo">odoo</h1>
+
+<p><a href="https://circleci.com/gh/locp/puppet-odoo/tree/master"><img
+src="https://circleci.com/gh/locp/puppet-odoo/tree/master.svg?style=svg"></a>
+<a href="https://travis-ci.org/locp/puppet-odoo"><img
+src="https://travis-ci.org/locp/puppet-odoo.png?branch=master"></a> <a
+href="https://coveralls.io/github/locp/puppet-odoo?branch=master"><img
+src="https://coveralls.io/repos/github/locp/puppet-odoo/badge.svg?branch=master"></a>
+<a
+href="https://gitter.im/locp/puppet-odoo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img
+src="https://badges.gitter.im/locp/puppet-odoo.svg"></a></p>
 
 <h2 id="label-Table+of+Contents">Table of Contents</h2>
 <ol><li>
 <p><a href="#description">Description</a></p>
 </li><li>
-<p><a href="#setup">Setup - The basics of getting started with odoo9</a></p>
+<p><a href="#setup">Setup - The basics of getting started with odoo</a></p>
 <ul><li>
-<p><a href="#what-odoo9-affects">What odoo9 affects</a></p>
+<p><a href="#what-odoo-affects">What odoo affects</a></p>
 </li><li>
-<p><a href="#beginning-with-odoo9">Beginning with odoo9</a></p>
+<p><a href="#beginning-with-odoo">Beginning with odoo</a></p>
 </li></ul>
 </li><li>
 <p><a href="#usage">Usage - Configuration options and additional
@@ -87,7 +97,7 @@ module</a></p>
 
 <h2 id="label-Description">Description</h2>
 
-<p>Install Odoo 9 Communinty edition in a manner similar to that described in
+<p>Install Odoo Communinty edition in a manner similar to that described in
 <em><a
 href="https://www.odoo.com/documentation/9.0/setup/install.html">Installing
 Odoo</a></em>.</p>
@@ -102,7 +112,7 @@ href="https://github.com/locp/puppet-odoo">github.com/locp/puppet-odoo</a></p>
 
 <h2 id="label-Setup">Setup</h2>
 
-<h3 id="label-What+odoo9+affects">What odoo9 affects</h3>
+<h3 id="label-What+odoo+affects">What odoo affects</h3>
 <ul><li>
 <p>Installs the <code>odoo</code> package from the Odoo repository.</p>
 </li><li>
@@ -117,28 +127,28 @@ the Odoo nightly builds.</p>
 repository.</p>
 </li></ul>
 
-<h3 id="label-Beginning+with+odoo9">Beginning with odoo9</h3>
+<h3 id="label-Beginning+with+odoo">Beginning with odoo</h3>
 
-<pre class="code ruby"><code class="ruby">include ::odoo9</code></pre>
+<pre class="code ruby"><code class="ruby">include ::odoo</code></pre>
 
 <h2 id="label-Usage">Usage</h2>
 
 <p>The following example will install a basic PostgreSQL database on the node
 (using
 <code>[puppetlabs-postgresql](https://forge.puppet.com/puppetlabs/postgresql)</code>)
-it then configures the the Odoo repositories. It then installs the
+it then configures the the Odoo 9 repositories. It then installs the
 <code>odoo</code> and <code>wkhtmltopdf</code> packages with some settings
 for the Odoo server:</p>
 
 <pre class="code ruby"><code class="ruby">class { &#39;postgresql::server&#39;:
-  before =&gt; Class[&#39;odoo9&#39;]
+  before =&gt; Class[&#39;odoo&#39;]
 }
 
-class { &#39;::odoo9::repo&#39;:
-  before =&gt; Class[&#39;odoo9&#39;]
+class { &#39;::odoo::repo9&#39;:
+  before =&gt; Class[&#39;odoo&#39;]
 }
 
-class { &#39;::odoo9&#39;:
+class { &#39;::odoo&#39;:
   install_wkhtmltopdf =&gt; true,
   settings            =&gt; {
     &#39;options&#39; =&gt; {
@@ -150,7 +160,6 @@ class { &#39;::odoo9&#39;:
       &#39;addons_path&#39;  =&gt; &#39;/usr/lib/python2.7/dist-packages/openerp/addons&#39;,
     }
   },
-  version             =&gt; &#39;9.0c.20161009&#39;,
 }</code></pre>
 
 <h2 id="label-Reference">Reference</h2>
@@ -158,16 +167,18 @@ class { &#39;::odoo9&#39;:
 <h3 id="label-Public+Classes">Public Classes</h3>
 <ul><li>
 <p><a
-href="http://locp.github.io/puppet-odoo/puppet_classes/odoo9.html">odoo9</a></p>
+href="http://locp.github.io/puppet-odoo/puppet_classes/odoo.html">odoo</a></p>
 </li><li>
 <p><a
-href="http://locp.github.io/puppet-odoo/puppet_classes/odoo9_3A_3Arepo.html">odoo9::repo</a></p>
+href="http://locp.github.io/puppet-odoo/puppet_classes/odoo_3A_3Arepo9.html">odoo::repo9</a></p>
+</li><li>
+<p><a
+href="http://locp.github.io/puppet-odoo/puppet_classes/odoo_3A_3Arepo10.html">odoo::repo10</a></p>
 </li></ul>
 
 <h2 id="label-Limitations">Limitations</h2>
 
-<p>At the moment this module has only been tested against Ubuntu 14. Also this
-module does not in anyway configure PostgreSQL.</p>
+<p>This module does not in anyway configure PostgreSQL.</p>
 
 <h2 id="label-Development">Development</h2>
 
@@ -178,7 +189,7 @@ href="https://guides.github.com/activities/contributing-to-open-source">guides.g
 </div></div>
 
       <div id="footer">
-  Generated on Sun Dec 25 13:48:42 2016 by
+  Generated on Fri Dec 30 07:53:04 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>
