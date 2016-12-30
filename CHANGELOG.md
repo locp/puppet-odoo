@@ -1,5 +1,9 @@
 # locp-odoo
 
+##2016-12-30 - Release 0.2.1 ([diff](https://github.com/locp/puppet-odoo/compare/0.2.0...0.2.1))
+
+Renamed the licence file.
+
 ##2016-12-30 - Release 0.2.0 ([diff](https://github.com/locp/puppet-odoo/compare/0.1.2...0.2.0))
 
 * Rename of the module from locp-odoo9 to locp-odoo.
