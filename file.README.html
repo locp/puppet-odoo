@@ -116,7 +116,7 @@ href="https://github.com/locp/puppet-odoo">github.com/locp/puppet-odoo</a></p>
 <ul><li>
 <p>Installs the <code>odoo</code> package from the Odoo repository.</p>
 </li><li>
-<p>Configures <code>/etc/odoo/openerp-server.conf</code>.</p>
+<p>Configures <code>/etc/odoo/odoo.conf</code>.</p>
 </li><li>
 <p>Manipulates the running state of the <code>odoo</code> service.</p>
 </li><li>
@@ -149,6 +149,7 @@ class { &#39;::odoo::repo9&#39;:
 }
 
 class { &#39;::odoo&#39;:
+  config_file         =&gt; &#39;/etc/odoo/openerp-server.conf&#39;,
   install_wkhtmltopdf =&gt; true,
   settings            =&gt; {
     &#39;options&#39; =&gt; {
@@ -160,13 +161,13 @@ class { &#39;::odoo&#39;:
       &#39;addons_path&#39;  =&gt; &#39;/usr/lib/python2.7/dist-packages/openerp/addons&#39;,
     }
   },
+  version             =&gt; present,
 }
 </code></pre>
 
 <p>To do the same for Odoo 10:</p>
 
-<pre class="code ruby"><code class="ruby">#
-class { &#39;postgresql::server&#39;:
+<pre class="code ruby"><code class="ruby">class { &#39;postgresql::server&#39;:
   before =&gt; Class[&#39;odoo&#39;]
 }
 
@@ -216,7 +217,7 @@ href="https://guides.github.com/activities/contributing-to-open-source">guides.g
 </div></div>
 
       <div id="footer">
-  Generated on Fri Dec 30 08:50:06 2016 by
+  Generated on Fri Dec 30 10:13:32 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.1.6).
 </div>
