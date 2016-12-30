@@ -53,7 +53,7 @@ namespace :deploy do
     local_version = args[:version]
 
     # Find out what the forge version of the module is.
-    response = HTTParty.get('https://forgeapi.puppetlabs.com/v3/modules/locp-cassandra')
+    response = HTTParty.get('https://forgeapi.puppetlabs.com/v3/modules/locp-odoo')
     data_hash = JSON.parse(response.body)
     forge_version = data_hash['current_release']['version']
     abort('Unable to find out the forge version.') unless forge_version
@@ -66,13 +66,6 @@ namespace :deploy do
     Rake::Task['build'].invoke
 
     # Now see if we can push this baby to the forge.
-    PUPPET_FORGE_CREDENTIALS_FILE = ENV['HOME'] + '/' + '.puppetforge.yml'
-    username = ENV['CIRCLE_PROJECT_USERNAME']
-    password = ENV['PUPPET_FORGE_PASSWORD']
-    abort("Not enough data to populate #{PUPPET_FORGE_CREDENTIALS_FILE}") unless username && password
-    puts "Populating #{PUPPET_FORGE_CREDENTIALS_FILE}"
-    credentials = { 'username' => username, 'password' => password }
-    File.open(PUPPET_FORGE_CREDENTIALS_FILE, 'w') { |f| f.write credentials.to_yaml }
     Rake::Task['module:push'].invoke
   end
 end
