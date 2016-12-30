@@ -31,7 +31,7 @@ This module has now been renamed to locp-odoo.  Please see the following:
 ### What odoo affects
 
 * Installs the `odoo` package from the Odoo repository.
-* Configures `/etc/odoo/openerp-server.conf`.
+* Configures `/etc/odoo/odoo.conf`.
 * Manipulates the running state of the `odoo` service.
 * Optionally configures repositories to enable package installations from
   the Odoo nightly builds.
@@ -62,6 +62,7 @@ class { '::odoo::repo9':
 }
 
 class { '::odoo':
+  config_file         => '/etc/odoo/openerp-server.conf',
   install_wkhtmltopdf => true,
   settings            => {
     'options' => {
@@ -73,13 +74,13 @@ class { '::odoo':
       'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
     }
   },
+  version             => present,
 }
 ```
 
 To do the same for Odoo 10:
 
 ```puppet
-#
 class { 'postgresql::server':
   before => Class['odoo']
 }
