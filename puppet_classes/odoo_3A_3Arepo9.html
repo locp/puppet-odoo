@@ -86,6 +86,24 @@
   
     <li>
       
+        <span class='name'>ensure</span>
+      
+      
+        <span class='type'>(<tt>absent | present</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>present</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Ensure the the repository is either absent or present.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>descr</span>
       
       
@@ -200,19 +218,6 @@ Hat family.</p>
       
     </li>
   
-    <li>
-      
-        <span class='name'>ensure</span>
-      
-      
-        <span class='type'>(<tt>Any</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>present</tt>)</em>
-      
-      
-    </li>
-  
 </ul>
 
 
@@ -223,8 +228,6 @@ Hat family.</p>
         <pre class="lines">
 
 
-10
-11
 12
 13
 14
@@ -288,10 +291,12 @@ Hat family.</p>
 72
 73
 74
-75</pre>
+75
+76
+77</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/repo9.pp', line 10</span>
+        <pre class="code"><span class="info file"># File 'manifests/repo9.pp', line 12</span>
 
 class odoo::repo9 (
   $ensure  = present,
@@ -366,7 +371,7 @@ class odoo::repo9 (
 </div>
 
       <div id="footer">
-  Generated on Fri Dec 30 07:53:05 2016 by
+  Generated on Fri Dec 30 07:55:12 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>
