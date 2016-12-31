@@ -1,6 +1,6 @@
 {
   "name": "locp-odoo",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "locp",
   "summary": "Puppet module to install Odoo Community.",
   "license": "Apache-2.0",
