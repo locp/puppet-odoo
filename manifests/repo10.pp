@@ -1,5 +1,10 @@
 # Install a repository to install an Odoo 10 package from.
 #
+# @example Declaring the class
+#   class { '::odoo::repo10':
+#     before => Class['odoo']
+#   }
+#
 # @param ensure [absent | present] Ensure the the repository is either
 #   absent or present.
 # @param descr [string] A string to describe the repository.
