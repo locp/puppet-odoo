@@ -85,7 +85,6 @@ class { '::odoo':
 To do the same for Odoo 10:
 
 ```puppet
-#
 class { 'postgresql::server':
   before => Class['odoo']
 }
