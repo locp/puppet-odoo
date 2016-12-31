@@ -1,5 +1,14 @@
 # locp-odoo
 
+##2016-12-31 - Release 0.2.2 ([diff](https://github.com/locp/puppet-odoo/compare/0.2.1...0.2.2))
+
+### Bug Fixes
+* Really fixed the licence/license file (hopefully).
+* Typos in the documentation.
+
+### Improvements
+* Improvements to the documentation.
+
 ##2016-12-30 - Release 0.2.1 ([diff](https://github.com/locp/puppet-odoo/compare/0.2.0...0.2.1))
 
 Renamed the licence file.
