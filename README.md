@@ -68,6 +68,7 @@ class { '::odoo::repo9':
 }
 
 class { '::odoo':
+  config_file         => '/etc/odoo/openerp-server.conf',
   install_wkhtmltopdf => true,
   settings            => {
     'options' => {
@@ -79,6 +80,7 @@ class { '::odoo':
       'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
     }
   },
+  version             => present,
 }
 ```
 
