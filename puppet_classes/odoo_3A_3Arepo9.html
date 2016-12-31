@@ -81,7 +81,21 @@
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Declaring the class</p>
+</div></p>
+      
+      <pre class="example code"><code>class { &#39;::odoo::repo9&#39;:
+  before =&gt; Class[&#39;odoo&#39;]
+}</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -228,11 +242,6 @@ Hat family.</p>
         <pre class="lines">
 
 
-12
-13
-14
-15
-16
 17
 18
 19
@@ -293,10 +302,15 @@ Hat family.</p>
 74
 75
 76
-77</pre>
+77
+78
+79
+80
+81
+82</pre>
       </td>
       <td>
-        <pre class="code"><span class="info file"># File 'manifests/repo9.pp', line 12</span>
+        <pre class="code"><span class="info file"># File 'manifests/repo9.pp', line 17</span>
 
 class odoo::repo9 (
   $ensure  = present,
@@ -371,7 +385,7 @@ class odoo::repo9 (
 </div>
 
       <div id="footer">
-  Generated on Fri Dec 30 10:13:32 2016 by
+  Generated on Sat Dec 31 11:09:43 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.1.6).
 </div>

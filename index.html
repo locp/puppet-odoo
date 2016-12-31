@@ -102,14 +102,6 @@ module</a></p>
 href="https://www.odoo.com/documentation/9.0/setup/install.html">Installing
 Odoo</a></em>.</p>
 
-<p>This module has now been renamed to locp-odoo. Please see the following:</p>
-<ul><li>
-<p><a href="https://forge.puppet.com/locp/odoo">forge.puppet.com/locp/odoo</a></p>
-</li><li>
-<p><a
-href="https://github.com/locp/puppet-odoo">github.com/locp/puppet-odoo</a></p>
-</li></ul>
-
 <h2 id="label-Setup">Setup</h2>
 
 <h3 id="label-What+odoo+affects">What odoo affects</h3>
@@ -129,7 +121,17 @@ repository.</p>
 
 <h3 id="label-Beginning+with+odoo">Beginning with odoo</h3>
 
-<pre class="code ruby"><code class="ruby">include ::odoo</code></pre>
+<pre class="code ruby"><code class="ruby">include ::odoo::repo10
+include ::odoo</code></pre>
+
+<p>or for Odoo 9:</p>
+
+<pre class="code ruby"><code class="ruby">include ::odoo::repo9
+include ::odoo</code></pre>
+
+<p>Do not have both <code>::odoo::repo9</code> and <code>::odoo::repo10</code>
+in your catalogue for the same node as they will both be attempting to
+update the repository file.</p>
 
 <h2 id="label-Usage">Usage</h2>
 
@@ -217,7 +219,7 @@ href="https://guides.github.com/activities/contributing-to-open-source">guides.g
 </div></div>
 
       <div id="footer">
-  Generated on Fri Dec 30 10:13:32 2016 by
+  Generated on Sat Dec 31 11:09:43 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.1.6).
 </div>
