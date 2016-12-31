@@ -21,17 +21,12 @@
 Install Odoo Communinty edition in a manner similar to that described in
 *[Installing Odoo](https://www.odoo.com/documentation/9.0/setup/install.html)*.
 
-This module has now been renamed to locp-odoo.  Please see the following:
-
-* https://forge.puppet.com/locp/odoo
-* https://github.com/locp/puppet-odoo
-
 ## Setup
 
 ### What odoo affects
 
 * Installs the `odoo` package from the Odoo repository.
-* Configures `/etc/odoo/openerp-server.conf`.
+* Configures `/etc/odoo/odoo.conf`.
 * Manipulates the running state of the `odoo` service.
 * Optionally configures repositories to enable package installations from
   the Odoo nightly builds.
@@ -40,8 +35,19 @@ This module has now been renamed to locp-odoo.  Please see the following:
 ### Beginning with odoo
 
 ```puppet
+include ::odoo::repo10
 include ::odoo
 ```
+
+or for Odoo 9:
+
+```puppet
+include ::odoo::repo9
+include ::odoo
+```
+
+Do not have both `::odoo::repo9` and `::odoo::repo10` in your catalogue for
+the same node as they will both be attempting to update the repository file.
 
 ## Usage
 

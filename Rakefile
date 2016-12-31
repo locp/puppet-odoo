@@ -90,3 +90,12 @@ namespace :deploy do
     end
   end
 end
+
+desc 'Run metadata_lint, rubocop, lint, validate and spec.'
+task test: [
+  :metadata_lint,
+  :rubocop,
+  :lint,
+  :validate,
+  :spec
+]
