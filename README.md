@@ -18,20 +18,15 @@
 
 ## Description
 
-Install Odoo 9 Communinty edition in a manner similar to that described in
+Install Odoo Communinty edition in a manner similar to that described in
 *[Installing Odoo](https://www.odoo.com/documentation/9.0/setup/install.html)*.
-
-This module has now been renamed to locp-odoo.  Please see the following:
-
-* https://forge.puppet.com/locp/odoo
-* https://github.com/locp/puppet-odoo
 
 ## Setup
 
 ### What odoo affects
 
 * Installs the `odoo` package from the Odoo repository.
-* Configures `/etc/odoo/openerp-server.conf`.
+* Configures `/etc/odoo/odoo.conf`.
 * Manipulates the running state of the `odoo` service.
 * Optionally configures repositories to enable package installations from
   the Odoo nightly builds.
@@ -40,15 +35,26 @@ This module has now been renamed to locp-odoo.  Please see the following:
 ### Beginning with odoo
 
 ```puppet
+include ::odoo::repo10
 include ::odoo
 ```
+
+or for Odoo 9:
+
+```puppet
+include ::odoo::repo9
+include ::odoo
+```
+
+Do not have both `::odoo::repo9` and `::odoo::repo10` in your catalogue for
+the same node as they will both be attempting to update the repository file.
 
 ## Usage
 
 The following example will install a basic PostgreSQL database on the
 node (using
 `[puppetlabs-postgresql](https://forge.puppet.com/puppetlabs/postgresql)`)
-it then configures the the Odoo repositories.  It then installs the
+it then configures the the Odoo 9 repositories.  It then installs the
 `odoo` and `wkhtmltopdf` packages with some settings for the Odoo
 server:
 
@@ -57,7 +63,35 @@ class { 'postgresql::server':
   before => Class['odoo']
 }
 
-class { '::odoo::repo':
+class { '::odoo::repo9':
+  before => Class['odoo']
+}
+
+class { '::odoo':
+  config_file         => '/etc/odoo/openerp-server.conf',
+  install_wkhtmltopdf => true,
+  settings            => {
+    'options' => {
+      'admin_passwd' => 'XXX_TOP_SECRET_XXX',
+      'db_host'      => 'False',
+      'db_port'      => 'False',
+      'db_user'      => 'odoo',
+      'db_password'  => 'False',
+      'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
+    }
+  },
+  version             => present,
+}
+```
+
+To do the same for Odoo 10:
+
+```puppet
+class { 'postgresql::server':
+  before => Class['odoo']
+}
+
+class { '::odoo::repo10':
   before => Class['odoo']
 }
 
@@ -70,10 +104,9 @@ class { '::odoo':
       'db_port'      => 'False',
       'db_user'      => 'odoo',
       'db_password'  => 'False',
-      'addons_path'  => '/usr/lib/python2.7/dist-packages/openerp/addons',
+      'addons_path'  => '/usr/lib/python2.7/dist-packages/odoo/addons',
     }
   },
-  version             => '9.0c.20161009',
 }
 ```
 
@@ -81,15 +114,16 @@ class { '::odoo':
 
 ### Public Classes
 
-* [odoo9]
-  (http://locp.github.io/puppet-odoo/puppet_classes/odoo9.html)
-* [odoo9::repo]
-  (http://locp.github.io/puppet-odoo/puppet_classes/odoo9_3A_3Arepo.html)
+* [odoo]
+  (http://locp.github.io/puppet-odoo/puppet_classes/odoo.html)
+* [odoo::repo9]
+  (http://locp.github.io/puppet-odoo/puppet_classes/odoo_3A_3Arepo9.html)
+* [odoo::repo10]
+  (http://locp.github.io/puppet-odoo/puppet_classes/odoo_3A_3Arepo10.html)
 
 ## Limitations
 
-At the moment this module has only been tested against Ubuntu 14.  Also this
-module does not in anyway configure PostgreSQL.
+This module does not in anyway configure PostgreSQL.
 
 ## Development
 
